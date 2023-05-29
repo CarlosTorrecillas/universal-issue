@@ -9,11 +9,18 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes', component: HeroesComponent }
+  { path: 'heroes', component: HeroesComponent },
+  {
+    path: 'lazy-loaded',
+    loadChildren: () => import('./lazy-loaded-module/lazy-loaded.module').then(m => m.LazyLoadedModule)
+},
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      initialNavigation: 'enabledBlocking',
+  })],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
