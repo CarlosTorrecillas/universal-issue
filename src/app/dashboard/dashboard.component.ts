@@ -9,6 +9,7 @@ import { HeroService } from '../hero.service';
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
+  jsonLd: any;
 
   constructor(private heroService: HeroService) { }
 
@@ -18,6 +19,23 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+      .subscribe(heroes => {
+        this.heroes = heroes.slice(1, 5);
+        this.jsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          'name': 'My organization',
+          'legalName' : 'Organisation LTD',
+          'url': 'http://www.organization.com',
+          'logo': 'http://www.organization.com/assets/logo.webp',
+          'foundingDate': '2023',
+          'founders': [
+              {
+                  '@type': 'Person',
+                  'name': 'Carlos Torrecillas'
+              }
+          ]
+      };
+      });
   }
 }

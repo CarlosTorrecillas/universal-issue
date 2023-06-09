@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,6 +17,7 @@ import { MessagesComponent } from './messages/messages.component';
 
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { JsonLdComponent } from './json-ld/json-ld/json-ld.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { isPlatformBrowser } from '@angular/common';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    JsonLdComponent,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -40,6 +42,9 @@ import { isPlatformBrowser } from '@angular/common';
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent
+  ],
+  providers: [
+    provideClientHydration()
   ],
   bootstrap: [ AppComponent ]
 })
