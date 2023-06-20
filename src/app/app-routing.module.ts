@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'lazy-loaded',
     loadChildren: () => import('./lazy-loaded-module/lazy-loaded.module').then(m => m.LazyLoadedModule)
-},
+  },
+  {
+    path: 'lazy-loaded2',
+    loadChildren: () => import('./lazy-loaded-module2/lazy-loaded2.module').then(m => m.LazyLoaded2Module)
+  },
 ];
 
 @NgModule({
