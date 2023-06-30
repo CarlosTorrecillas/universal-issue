@@ -13,7 +13,8 @@ export class ImageComponent implements OnInit {
         image.onload = () => {
             this.height = 75;
             this.width = image.width * this.height / image.height;
+            this.imageUrl = image.src;
         }
-        image.src = 'https://images.freeimages.com/images/large-previews/31a/traverse-1234278.jpg';
+        image.src = 'https://angular.io/assets/images/logos/angular/angular.svg';
     }
 }
