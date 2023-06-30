@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'lazy-loaded2',
     loadChildren: () => import('./lazy-loaded-module2/lazy-loaded2.module').then(m => m.LazyLoaded2Module)
   },
+  {
+    path: 'image-issue',
+    loadChildren: () => import('./image-module/image-module.module').then(m => m.ImageModuleModule)
+  }
 ];
 
 @NgModule({
